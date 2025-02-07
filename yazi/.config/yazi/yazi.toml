@@ -1,0 +1,13 @@
+[opener]
+xournalpp = [
+    { run = 'xournalpp "$@"', desc = "Xournal++" },
+]
+[open]
+prepend_rules = [
+    { name = "*.xopp", use = ["xournalpp", "reveal"] },
+    { name = "*.pdf", use = ["open", "reveal", "xournalpp"] },
+]
+append_rules = [
+    # { name = "*.pdf", use = ["xournalpp", "open", "reveal", ] },
+    # { name = "*", use = ["open", "reveal"] },
+]
