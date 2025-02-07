@@ -1,0 +1,152 @@
+(defcfg
+    process-unmapped-keys yes
+    concurrent-tap-hold yes
+)
+
+(defsrc
+    esc
+    caps 1    2    3    4    5    6    7    8    9    0    -    =   bspc    del
+                                                                    \
+         a    s    d    f    g    h    j    k    l    ;    '    ret
+#|  lctl lmet lalt |#         spc             #| lalt      lmet lctl    |#
+)
+
+(defvar
+    tap-time 150
+    hold-time 150
+    chord-time-short 100
+    chord-time-medium 250
+    chord-time-long 500
+    chord-time-extralong 2000
+)
+
+(defalias
+    ;; ===== regular key mods =====
+    a-md (tap-hold $tap-time $hold-time a lmet)
+    s-md (tap-hold $tap-time $hold-time s lalt)
+    d-md (tap-hold $tap-time $hold-time d lsft)
+    f-md (tap-hold $tap-time $hold-time f lctl)
+
+    j-md (tap-hold $tap-time $hold-time j rctl)
+    k-md (tap-hold $tap-time $hold-time k rsft)
+    l-md (tap-hold $tap-time $hold-time l lalt)
+    ;-md (tap-hold $tap-time $hold-time ; rmet)
+    
+    ;; ===== chords =====
+    ;; special layer switch
+    f-mdc (chord lay-special f)
+    j-mdc (chord lay-special j)
+
+    spc-mdc (chord lay-special spc)
+
+    ;; j-mdcnl (chord lay-special-noleft j)
+    ;; spc-mdcnl (chord lay-special-noleft spc)
+
+    ;; sft + bspc => del
+    ;; d-mdc (chord bspc-del d)
+    ;; k-mdc (chord bspc-del k)
+    ;; bspc-md (chord bspc-del bspc)
+    d-mdc @d-md
+    k-mdc @k-md
+    bspc-md bspc
+
+    ;; management actions
+    esc-md (chord management esc)
+    1-md (chord management 1)
+    2-md (chord management 2)
+    3-md (chord management 3)
+    4-md (chord management 4)
+    5-md (chord management 5)
+    6-md (chord management 6)
+    7-md (chord management 7)
+    8-md (chord management 8)
+    9-md (chord management 9)
+    0-md (chord management 0)
+
+    del-md (chord management del)
+
+    ;; ===== layer activations =====
+    sw-lay-special (layer-while-held addon-special-ansi)
+    sw-lay-base-iso (layer-switch base-iso)
+    sw-lay-noleft-iso (layer-switch noleft-iso)
+    sw-lay-base-ansi (layer-switch base-ansi)
+    sw-lay-noleft-ansi (layer-switch noleft-ansi)
+)
+
+(defchords lay-special $chord-time-short
+    (f        )    @f-md
+    (   j     )    @j-md
+    (      spc)    spc
+    (f     spc)    @sw-lay-special
+    (   j  spc)    @sw-lay-special
+)
+
+;; TODO convert to mostly passthrough layer modding relevant numbers instead of chord
+;; chords for managing kanata: switching layers and reloading config
+(defchords management $chord-time-long
+    ;; passthrough
+    (esc        )   esc
+    (1          )   1
+    (2          )   2
+    (3          )   3
+    (4          )   4
+    (5          )   5
+    (6          )   6
+    (7          )   7
+    (8          )   8
+    (9          )   9
+    (0          )   0
+    (del        )   del
+    ;; chorded actions passthrough
+    (esc    1   )   @sw-lay-base-iso
+    (esc    2   )   @sw-lay-noleft-iso
+    (esc    3   )   @sw-lay-base-ansi
+    (esc    4   )   @sw-lay-base-ansi
+    (esc    5   )   XX
+    (esc    6   )   XX
+    (esc    7   )   XX
+    (esc    8   )   XX
+    (esc    9   )   XX
+    (esc    0   )   XX
+    (esc    del )   lrld
+)
+
+(deflayer base-iso ;; base layer for iso keyboards (swaps '\' and 'ret')
+    @esc-md
+    @esc-md @1-md   @2-md   @3-md   @4-md   @5-md   @6-md   @7-md   @8-md   @9-md   @0-md   _       _       @bspc-md    @del-md
+                                                                                                        ret
+            @a-md   @s-md   @d-mdc  @f-mdc  _       _       @j-mdc  @k-mdc  @l-md   @;-md   _       \
+#|  lctl    lmet    lalt |#                 @spc-mdc                     #| lalt            lmet    lctl    |#
+)
+
+(deflayer noleft-iso ;; layer without left homrow mods for iso keyboards (swaps '\' and 'ret')
+    @esc-md
+    @esc-md @1-md   @2-md   @3-md   @4-md   @5-md   @6-md   @7-md   @8-md   @9-md   @0-md   _       _       @bspc-md    @del-md
+                                                                                                        ret
+            _       _       _       _       _       _       @j-mdc  @k-mdc  @l-md   @;-md   _       \
+#|  lctl    lmet    lalt |#                 @spc-mdc                     #| lalt            lmet    lctl    |#
+)
+
+(deflayer base-ansi ;; base layer for ansi keyboards
+    @esc-md
+    @esc-md @1-md   @2-md   @3-md   @4-md   @5-md   @6-md   @7-md   @8-md   @9-md   @0-md   _       _       @bspc-md    @del-md
+                                                                                                        _
+            @a-md   @s-md   @d-mdc  @f-mdc  _       _       @j-mdc  @k-mdc  @l-md   @;-md   _       _
+#|  lctl    lmet    lalt |#                 @spc-mdc                     #| lalt            lmet    lctl    |#
+)
+
+(deflayer noleft-ansi ;; layer without left homrow mods for ansi keyboards
+    @esc-md
+    @esc-md @1-md   @2-md   @3-md   @4-md   @5-md   @6-md   @7-md   @8-md   @9-md   @0-md   _       _       @bspc-md    @del-md
+                                                                                                        _
+            _       _       _       _       _       _       @j-mdc  @k-mdc  @l-md   @;-md   _       _
+#|  lctl    lmet    lalt |#                 @spc-mdc                     #| lalt            lmet    lctl    |#
+)
+
+(deflayer addon-special-ansi ;; layer for special actions such as hjkl arrows
+    _
+    _       _       _       _       _       _       _       _       _       _       _       _       _       _           _
+                                                                                                        _
+            _       _       _       _       _       ◀       ▼       ▲       ▶       _       _       _
+#|  lctl    lmet    lalt |#                     _                        #| lalt            lmet    lctl    |#
+)
