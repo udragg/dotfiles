@@ -1,0 +1,3 @@
+gtk-titlebar = false
+gtk-adwaita = false
+theme = catppuccin-macchiato
