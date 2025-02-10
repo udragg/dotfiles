@@ -73,6 +73,7 @@
     sw-lay-noleft-ansi (layer-switch noleft-ansi)
 )
 
+;; TODO tap-hold barely works.. try defchordsv2-experimental
 (defchords lay-special $chord-time-short
     (f        )    @f-md
     (   j     )    @j-md
@@ -115,7 +116,7 @@
     @esc-md
     @esc-md @1-md   @2-md   @3-md   @4-md   @5-md   @6-md   @7-md   @8-md   @9-md   @0-md   _       _       @bspc-md    @del-md
                                                                                                         ret
-            @a-md   @s-md   @d-mdc  @f-mdc  _       _       @j-mdc  @k-mdc  @l-md   @;-md   _       \
+            @a-md   @s-md   @d-mdc  @f-mdc  _       _       @j-md   @k-mdc  @l-md   @;-md   _       \
 #|  lctl    lmet    lalt |#                 @spc-mdc                     #| lalt            lmet    lctl    |#
 )
 
@@ -131,7 +132,7 @@
     @esc-md
     @esc-md @1-md   @2-md   @3-md   @4-md   @5-md   @6-md   @7-md   @8-md   @9-md   @0-md   _       _       @bspc-md    @del-md
                                                                                                         _
-            @a-md   @s-md   @d-mdc  @f-mdc  _       _       @j-mdc  @k-mdc  @l-md   @;-md   _       _
+            @a-md   @s-md   @d-mdc  @f-mdc  _       _       @j-md   @k-mdc  @l-md   @;-md   _       _
 #|  lctl    lmet    lalt |#                 @spc-mdc                     #| lalt            lmet    lctl    |#
 )
 
