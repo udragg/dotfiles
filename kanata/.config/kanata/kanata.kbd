@@ -102,7 +102,7 @@
     (esc    1   )   @sw-lay-base-iso
     (esc    2   )   @sw-lay-noleft-iso
     (esc    3   )   @sw-lay-base-ansi
-    (esc    4   )   @sw-lay-base-ansi
+    (esc    4   )   @sw-lay-noleft-ansi
     (esc    5   )   XX
     (esc    6   )   XX
     (esc    7   )   XX
