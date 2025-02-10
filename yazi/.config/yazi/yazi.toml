@@ -2,10 +2,24 @@
 xournalpp = [
     { run = 'xournalpp "$@"', desc = "Xournal++" },
 ]
+kolourpaint = [
+    { run = 'kolourpaint "$@"', desc = "KolourPaint" },
+]
+inkscape = [
+    { run = 'inkscape "$@"', desc = "Inkscape" },
+]
+krita = [
+    { run = 'krita "$@"', desc = "Krita" },
+]
+gimp = [
+    { run = 'gimp "$@"', desc = "GIMP" },
+]
+
 [open]
 prepend_rules = [
     { name = "*.xopp", use = ["xournalpp", "reveal"] },
     { name = "*.pdf", use = ["open", "reveal", "xournalpp"] },
+    { mime = "image/*", use = ["open", "reveal", "kolourpaint", "krita", "inkscape", "gimp"] },
 ]
 append_rules = [
     # { name = "*.pdf", use = ["xournalpp", "open", "reveal", ] },
