@@ -27,3 +27,6 @@ show arg="":
 
 show-all arg="":
     @tree -a {{arg}}
+
+edit arg:
+    @cd {{arg}}/.config/{{arg}} && nvim && cd -
