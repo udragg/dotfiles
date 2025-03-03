@@ -15,6 +15,7 @@ alias tmux "tmux -2"
 alias lg "lazygit" 
 alias l "loginctl lock-session"
 alias sctl "systemctl "
+alias btctl "bluetoothctl"
 alias tree "$ls_cmd --tree --git-ignore"
 alias amdgpu_top "amdgpu_top --dark"
 
