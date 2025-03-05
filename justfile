@@ -6,7 +6,7 @@ stow +dirs:
 
 
 unstow +dirs:
-    for dir in {{dirs}}; stow --delete "$dir" %% echo "Unstowed $dir"; end
+    for dir in {{dirs}}; stow --delete "$dir" && echo "Unstowed $dir"; end
 
 
 new-config +names:
