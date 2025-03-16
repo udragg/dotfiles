@@ -76,10 +76,13 @@
     // },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10
+        "spacing": 10,
+        "show-passive-items": true
     },
     "clock": {
         // "timezone": "America/New_York",
+        "format": "{:%H:%M:%S}",
+        "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
