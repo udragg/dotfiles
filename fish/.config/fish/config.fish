@@ -56,4 +56,9 @@ function y
     rm -f -- "$tmp"
 end
 
+# prevent bad linebreaks with nvim as manpager
+function man
+    COLUMNS=(math $COLUMNS -3) command man $argv
+end
+
 fzf --fish | source
