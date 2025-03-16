@@ -23,6 +23,11 @@ alias amdgpu_top "amdgpu_top --dark"
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 
+# XDG base directories
+export XDG_DATA_HOME="$HOME/.local/share/"
+export XDG_CACHE_HOME="$HOME/.cache/"
+export XDG_CONFIG_HOME="$HOME/.config/"
+
 # inits
 zoxide init fish | source
 cod init $fish_pid fish | source
