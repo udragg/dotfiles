@@ -46,5 +46,6 @@ Config(
     "libshell.so",
     "libsymbols.so",
     "libtranslate.so",
+    "libwebsearch.so",
   ],
 )
