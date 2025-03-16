@@ -1,0 +1,28 @@
+[alias]
+	lg = log --graph --oneline --decorate
+	graph = !git lg --all --color=always | less -r
+	graph-detailed = !git log --graph --decorate --all --color=always | less -r
+	s = status
+	c = commit
+	cm = commit -m
+	grd = graph-detailed
+	gr = graph
+	rmbranch = branch -d
+	mvbranch = branch -m
+	refresh-branches = !git branch -d -r $(git branch -r | sed \"s/^ *//\") && git fetch
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[config]
+	gr = graph
+	grd = graph-detailed
+[rerere]
+	enabled = true
+[alias "refresh"]
+	branches = --unset
+[diff]
+	tool = nvimdiff
+[init]
+	defaultBranch = main
