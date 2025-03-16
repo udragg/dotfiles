@@ -1,10 +1,30 @@
 theme = "catppuccin_macchiato"
 
 [editor]
+true-color = true
 line-number = "relative"
 mouse = true
+clipboard-provider = "tmux"
+completion-timeout = 50
+bufferline = "multiple"
+color-modes = true
+end-of-line-diagnostics = "hint"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 
+[editor.lsp]
+display-progress-messages = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.auto-save]
+focus-lost = true
