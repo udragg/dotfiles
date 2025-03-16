@@ -40,11 +40,11 @@ Config(
   // `<anyrun config dir>/plugins` directory or with an absolute path to just load the file the path points to.
   plugins: [
     "libapplications.so",
-    "libsymbols.so",
+    "libdictionary.so",
+    "librandr.so",
     "librink.so",
     "libshell.so",
+    "libsymbols.so",
     "libtranslate.so",
-    "librandr.so",
-    "libdictionary.so",
   ],
 )
