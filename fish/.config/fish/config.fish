@@ -56,6 +56,26 @@ function y
     rm -f -- "$tmp"
 end
 
+function pyvenv
+    if test "$argv[1]" = ""
+	set venv_name ".venv"
+    else
+	set venv_name "$argv[1]"
+    end
+    if test "$VIRTUAL_ENV" = "" # no virtualenv active
+	if test -d "$venv_name"
+	    source "$venv_name/bin/activate.fish"
+	    echo "Activated virtual environment at $venv_name"
+	else
+	    echo "Could not find $venv_name"
+	end
+    else
+	deactivate
+	echo "Deactivated virtual environment"
+    end
+end
+alias venv "pyvenv"
+
 # prevent bad linebreaks with nvim as manpager
 function man
     COLUMNS=(math $COLUMNS -3) command man $argv
