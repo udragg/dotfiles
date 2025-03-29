@@ -18,6 +18,8 @@ alias sctl "systemctl "
 alias btctl "bluetoothctl"
 alias tree "$ls_cmd --tree --git-ignore"
 alias amdgpu_top "amdgpu_top --dark"
+alias d "docker"
+alias j "just"
 
 # env var
 export EDITOR=nvim
