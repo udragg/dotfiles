@@ -28,12 +28,14 @@ export XDG_DATA_HOME="$HOME/.local/share/"
 export XDG_CACHE_HOME="$HOME/.cache/"
 export XDG_CONFIG_HOME="$HOME/.config/"
 
+# uv: supress harklink warning
+export UV_LINK_MODE=copy
+
 # inits
 zoxide init fish | source
 cod init $fish_pid fish | source
 starship init fish | source
 enable_transience
-pyenv init - | source
 
 # ROCm config
 export ROCM_PATH="/opt/rocm"
