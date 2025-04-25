@@ -41,6 +41,7 @@ Config(
   plugins: [
     "libapplications.so",
     "libdictionary.so",
+    "libhunspell.so",
     "libqalculate.so",
     "librandr.so",
     "librink.so",

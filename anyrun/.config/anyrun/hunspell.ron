@@ -1,0 +1,15 @@
+Config(
+  prefix: ":spell",
+  default_language: "en",
+  max_entries: 20,
+  aliases: [
+    Alias(
+      name: "en",
+      dictionary: "en_US",
+    ),
+    Alias(
+      name: "nl",
+      dictionary: "nl_BE",
+    ),
+  ],
+)
