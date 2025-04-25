@@ -28,3 +28,11 @@ hidden = false
 
 [editor.smart-tab]
 enable = false
+
+[keys.normal]
+"A-j" = ["scroll_down", "move_visual_line_down"]
+"A-k" = ["scroll_up", "move_visual_line_up"]
+"A-h" = "goto_previous_buffer"
+"A-l" = "goto_next_buffer"
+"C-e" = "scroll_down"
+"C-y" = "scroll_up"
