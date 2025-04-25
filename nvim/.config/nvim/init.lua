@@ -88,7 +88,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -211,7 +211,7 @@ require('lazy').setup({
   --     vim.cmd.colorscheme 'catppuccin'
   --   end,
   -- },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
 
   {
     -- Set lualine as statusline
@@ -311,10 +311,10 @@ require('lazy').setup({
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<C-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<C-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<C-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<C-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
     lazy = false,
@@ -322,11 +322,11 @@ require('lazy').setup({
 
   {
     "Djancyp/better-comments.nvim",
-    lazy=false,
+    lazy = false,
   },
   {
     "m4xshen/autoclose.nvim",
-    lazy=false,
+    lazy = false,
   },
   {
     "ron-rs/ron.vim",
@@ -376,16 +376,16 @@ require('lazy').setup({
       vim.keymap.set("n", "<F4>", dap.step_out)
       vim.keymap.set("n", "<F5>", dap.step_back)
 
-      dap.listeners.before.attach.dapui_config = function ()
+      dap.listeners.before.attach.dapui_config = function()
         ui.open()
       end
-      dap.listeners.before.launch.dapui_config = function ()
+      dap.listeners.before.launch.dapui_config = function()
         ui.open()
       end
-      dap.listeners.before.event_terminated.dapui_config = function ()
+      dap.listeners.before.event_terminated.dapui_config = function()
         ui.close()
       end
-      dap.listeners.before.event_exited.dapui_config = function ()
+      dap.listeners.before.event_exited.dapui_config = function()
         ui.close()
       end
     end
@@ -397,7 +397,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- auto-session localoptions
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -414,16 +414,16 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 -- vim.o.clipboard = 'unnamedplus'
 vim.g.clipboard = {
-   name = 'myClipboard',
-   copy = {
-       ['+'] = {'tmux', 'load-buffer', '-'},
-       ['*'] = {'tmux', 'load-buffer', '-'},
-   },
-   paste = {
-       ['+'] = {'tmux', 'save-buffer', '-'},
-       ['*'] = {'tmux', 'save-buffer', '-'},
-   },
-   cache_enabled = true,
+  name = 'myClipboard',
+  copy = {
+    ['+'] = { 'tmux', 'load-buffer', '-' },
+    ['*'] = { 'tmux', 'load-buffer', '-' },
+  },
+  paste = {
+    ['+'] = { 'tmux', 'save-buffer', '-' },
+    ['*'] = { 'tmux', 'save-buffer', '-' },
+  },
+  cache_enabled = true,
 }
 
 -- Enable break indent
@@ -452,10 +452,10 @@ vim.o.termguicolors = true
 -- vim.cmd 'set background=dark'
 
 -- Set tab size to 4 space and use spaces by default
-vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.tabstop = 4      -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+vim.o.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
 
 -- [[ Basic Keymaps ]]
 
@@ -817,52 +817,52 @@ cmp.setup {
 
 -- [[ Catppuccin ]]
 require("catppuccin").setup({
-    flavour = "macchiato", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "mocha",
+  flavour = "macchiato", -- latte, frappe, macchiato, mocha
+  background = {         -- :h background
+    light = "latte",
+    dark = "mocha",
+  },
+  transparent_background = false, -- disables setting the background color.
+  show_end_of_buffer = false,     -- shows the '~' characters after the end of buffers
+  term_colors = false,            -- sets terminal colors (e.g. `g:terminal_color_0`)
+  dim_inactive = {
+    enabled = false,              -- dims the background color of inactive window
+    shade = "dark",
+    percentage = 0.15,            -- percentage of the shade to apply to the inactive window
+  },
+  no_italic = false,              -- Force no italic
+  no_bold = false,                -- Force no bold
+  no_underline = false,           -- Force no underline
+  styles = {                      -- Handles the styles of general hi groups (see `:h highlight-args`):
+    comments = { "italic" },      -- Change the style of comments
+    conditionals = { "italic" },
+    loops = {},
+    functions = {},
+    keywords = {},
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+    -- miscs = {}, -- Uncomment to turn off hard-coded styles
+  },
+  color_overrides = {},
+  custom_highlights = {},
+  default_integrations = true,
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    nvimtree = true,
+    treesitter = true,
+    notify = false,
+    mini = {
+      enabled = true,
+      indentscope_color = "",
     },
-    transparent_background = false, -- disables setting the background color.
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-    dim_inactive = {
-        enabled = false, -- dims the background color of inactive window
-        shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    no_underline = false, -- Force no underline
-    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-        -- miscs = {}, -- Uncomment to turn off hard-coded styles
-    },
-    color_overrides = {},
-    custom_highlights = {},
-    default_integrations = true,
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = {
-            enabled = true,
-            indentscope_color = "",
-        },
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-    },
+    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  },
 })
 
 -- setup must be called before loading
@@ -945,10 +945,10 @@ require('better-comment').Setup({
 
 --
 -- taplo setup to work for single files
-require('lspconfig').taplo.setup{
+require('lspconfig').taplo.setup {
   filetypes = { 'toml' },
   -- IMPORTANT : this is required for Taplo LSP to work in non-Git repositories
-   root_dir = require('lspconfig.util').root_pattern('*.toml', '.git'),
+  root_dir = require('lspconfig.util').root_pattern('*.toml', '.git'),
 }
 
 
