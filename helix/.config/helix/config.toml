@@ -26,5 +26,5 @@ display-progress-messages = true
 [editor.file-picker]
 hidden = false
 
-[editor.auto-save]
-focus-lost = true
+[editor.smart-tab]
+enable = false
